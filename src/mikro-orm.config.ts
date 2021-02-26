@@ -3,6 +3,7 @@ import { __prod__ } from './constants';
 import { MikroORM } from '@mikro-orm/core';
 import path from 'path';
 import dotenv from 'dotenv';
+import { User } from './entities/User';
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ export default {
         path: path.join(__dirname, './migrations'),
         pattern: /^[\w-]+\d+\.[tj]s$/,
     },
-    entities: [Post],
+    entities: [Post, User],
     dbName: process.env.db_name,
     user: process.env.db_user,
     password: process.env.user_password,

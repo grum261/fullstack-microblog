@@ -50,7 +50,6 @@ export class PostResolver {
         @Arg('id') id: number, 
         @Ctx() {em}: MyContext
     ): Promise<boolean> {
-        // Почитать про try catch, чтобы возвращать false при несуществующем id
         if (await em.findOne(Post, {id}) === null) {
             return false;
         }
