@@ -2,7 +2,9 @@ import { Post } from './entities/Post';
 import { __prod__ } from './constants';
 import { MikroORM } from '@mikro-orm/core';
 import path from 'path';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 export default {
     migrations: {
@@ -10,9 +12,9 @@ export default {
         pattern: /^[\w-]+\d+\.[tj]s$/,
     },
     entities: [Post],
-    dbName: 'db_name',
-    username: 'postgres',
-    password: 'postgres',
+    dbName: process.env.db_name,
+    user: process.env.db_user,
+    password: process.env.user_password,
     type: 'postgresql',
     debug: !__prod__,
 } as Parameters<typeof MikroORM.init>[0];
