@@ -7,6 +7,7 @@ import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { NuPrivetResolver } from './resolvers/privet';
 import { PostResolver } from './resolvers/posts';
+import { UserResolver } from './resolvers/user';
 
 
 const main = async () => {
@@ -17,7 +18,7 @@ const main = async () => {
     
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [NuPrivetResolver, PostResolver],
+            resolvers: [NuPrivetResolver, PostResolver, UserResolver],
             validate: false
         }),
         context: () => ({ em: orm.em }),
